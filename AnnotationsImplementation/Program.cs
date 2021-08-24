@@ -14,11 +14,7 @@ namespace AnnotationsImplementation
             author.FirstName = Console.ReadLine();
             Console.WriteLine("Enter Last Name");
             author.LastName = Console.ReadLine();
-            Console.WriteLine("Enter Phone Number");
-            author.PhoneNumber = Console.ReadLine();
-            Console.WriteLine("Enter Email ID");
-            author.Email = Console.ReadLine();
-            Console.WriteLine();
+
 
             ValidationContext context = new ValidationContext(author, null, null);
             List<ValidationResult> validationResults = new List<ValidationResult>();
@@ -33,9 +29,8 @@ namespace AnnotationsImplementation
             else
             {
                 Console.WriteLine("First Name :"+author.FirstName);
-                Console.WriteLine("Last Name :"+author.LastName);
-                Console.WriteLine("Phone Number :"+author.PhoneNumber);
-                Console.WriteLine("Email ID :"+author.Email);
+                Console.WriteLine("Last Name :" + author.LastName);
+
             }
             Console.ReadKey();
         }
@@ -54,15 +49,5 @@ namespace AnnotationsImplementation
         [DataType(DataType.Text)]
         [RegularExpression(@"^[A-Z]{1}[a-z]$", ErrorMessage = "The first letter of the lastname should be capital")]
         public string LastName { get; set; }
-
-        [DataType(DataType.PhoneNumber)]
-        [Phone]
-        [StringLength(10)]
-        public string PhoneNumber { get; set; }
-
-        [DataType(DataType.EmailAddress)]
-        [EmailAddress]
-        [RegularExpression(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$",ErrorMessage ="Please enter valid Email ID")]
-        public string Email { get; set; }
     }
 }
