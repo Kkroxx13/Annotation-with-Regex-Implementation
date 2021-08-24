@@ -14,6 +14,8 @@ namespace AnnotationsImplementation
             author.FirstName = Console.ReadLine();
             Console.WriteLine("Enter Last Name");
             author.LastName = Console.ReadLine();
+            Console.WriteLine("Enter Phone Number #");
+            author.PhoneNumber = Console.ReadLine();
 
 
             ValidationContext context = new ValidationContext(author, null, null);
@@ -30,6 +32,7 @@ namespace AnnotationsImplementation
             {
                 Console.WriteLine("First Name :"+author.FirstName);
                 Console.WriteLine("Last Name :" + author.LastName);
+                Console.WriteLine("Phone Number :" + author.PhoneNumber);
 
             }
             Console.ReadKey();
@@ -49,5 +52,10 @@ namespace AnnotationsImplementation
         [DataType(DataType.Text)]
         [RegularExpression(@"^[A-Z]{1}[a-z]$", ErrorMessage = "The first letter of the lastname should be capital")]
         public string LastName { get; set; }
+
+        [DataType(DataType.PhoneNumber)]
+        [Phone]
+        [StringLength(10)]
+        public string PhoneNumber { get; set; }
     }
 }
